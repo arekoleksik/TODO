@@ -23,13 +23,8 @@ function Store() {
 
     this.loadList = loadList;
     this.listener = listener;
-    this.removeElement = removeElement;
 
     window.onload = loadList;
-
-    function isEmptyList(listFromFireBase) {
-        return Object.keys(listFromFireBase).length === 0;
-    }
 
     function _fillList(content) {
         let lista = document.getElementById('elements');
@@ -68,7 +63,7 @@ function Store() {
                 return response.json();
             })
             .then(function (json) {
-                if (isEmptyList(json)) {
+                if (json === null) {
                     json = {0: {value: "Nothing TODO"}}
                 }
                 _fillList(json);
