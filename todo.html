@@ -1,44 +1,21 @@
 <html>
 <head>
     <title>My first todo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
 
-<div>
+<div id="wraper">
+    <h2>Dodaj nowe zadanie </h2>
     <form id="todoForm">
-        <span>Dodaj nowe zadanie</span> <input type="text" id="add-new-element" />
-        <button type="submit" value="add">Dodaj</button>
+        <input type="text" id="add-new-element"/>
+        <button type="submit" value="add" class="btn btn-outline-primary">Dodaj</button>
     </form>
-    <div id="elementy">
+    <div id="elements" class="btn-group-vertical">
     </div>
 </div>
 
-<script>
-    document.querySelector("#todoForm").addEventListener("submit", function(event){
-        event.preventDefault();
-        let todoValue = document.querySelector("#add-new-element").value;
-        fetch('https://projekt1-11e1d.firebaseio.com/todo.json', {
-            method: "POST",
-            body: JSON.stringify({value: todoValue})
-        }).then(function (response) {
-            if (response.ok) {
-                fetch('https://projekt1-11e1d.firebaseio.com/todo.json').then(function(response) {
-                    return response.json();
-                }).then(function (json) {
-                    console.log(json);
-                    let lista= document.getElementById('elementy');
-                    lista.innerText='';
-                    for (let taskid in json) {
-                        let taskElement=document.createElement('li');
-                        taskElement.innerText=json[taskid].value;
-                        lista.appendChild(taskElement);
-                    }
-                });
-            }
-        });
-
-
-    });
-</script>
+<script type="text/javascript" src="app.js"></script>
 </body>
 </html>

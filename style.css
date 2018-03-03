@@ -1,0 +1,15 @@
+#wraper{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.btn-group-vertical, #todoForm{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.btn-secondary button{
+    margin-left: 20px;
+}
